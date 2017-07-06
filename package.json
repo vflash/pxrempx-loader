@@ -1,0 +1,35 @@
+{
+    "version": "0.1.0",
+    "name": "pxrempx-loader",
+    "description": "webpack pxrempx-loader",
+    "keywords": [
+        "webpack",
+        "rem",
+        "px",
+        "js"
+    ],
+    "main": "./pxrempx-loader.js",
+    "homepage": "github.com/vflash/pxrempx-loader",
+    "bugs": {
+        "url": "https://github.com/vflash/pxrempx-loader/issues"
+    },
+    "author": {
+        "name": "Vopilovskiy Konstantin",
+        "email": "flash.vkv@gmail.com",
+        "url": "http://vflash.ru"
+    },
+
+    "files": [
+        "LICENSE",
+        "README.md",
+        "pxrempx-loader.js"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/vflash/pxrempx-loader.git"
+    },
+    "dependencies": {
+        "loader-utils": "^1.1.0",
+        "regx-master": "*"
+    }
+}
