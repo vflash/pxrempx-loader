@@ -3,7 +3,7 @@ var regxMaster = require('regx-master');
 
 var globalFilter = null;
 var rgxCSS = regxMaster(/[:css:]|([:pxrem:])/g, {
-    pxrem: /\b([\d+\.]+)(?:px|rem)\b/,
+    pxrem: /[\^\:\s\,\(\+\-\*\/](\d+(\.\d+)?|\.\d+)(?:px|rem)\b/,
     css: true
 });
 
@@ -39,13 +39,11 @@ function pxrempx(data, fixed, root, rempx) {
         if (!pxrem) {
             return s;
         };
-
-        var a = s.match(/(.+)(px|rem)$/);
-        if (a[2] === 'px') {
-            var rem = (+a[1] / root).toFixed(fixed).replace(/\.?[0]+$/, '');
-            return rem + 'rem';
+        var a = s.match(/^([^\d\.]+)([\d\.]+)(px|rem)$/);
+        if (a[3] === 'px') {
+            var rem = (+a[2] / root).toFixed(fixed).replace(/\.?[0]+$/, '');
+            return a[1] + (rem + 'rem');
         };
-
-        return rempx ? a[1] + 'px' : s;
+        return rempx ? a[1] + (a[2] + 'px') : s;
     });
 };
